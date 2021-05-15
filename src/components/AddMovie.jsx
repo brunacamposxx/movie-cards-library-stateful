@@ -14,6 +14,8 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
@@ -25,6 +27,17 @@ class AddMovie extends Component {
           <input
             type="text"
             data-testid="title-input"
+            value={ title }
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            type="text"
+            data-testid="subtitle-input"
+            value={ subtitle }
+            onChange={ this.handleChange }
           />
         </label>
       </form>
