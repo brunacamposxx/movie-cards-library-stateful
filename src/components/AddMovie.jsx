@@ -2,18 +2,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const initialState = {
-  subtitle: '',
-  title: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-};
-
 class AddMovie extends Component {
   constructor(props) {
     super(props);
+
+    const initialState = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
 
     this.state = initialState;
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +25,15 @@ class AddMovie extends Component {
     this.genre = this.genre.bind(this);
   }
 
+  // this.setState({
+  //   title: '',
+  //     subtitle: '',
+  //     imagePath: '',
+  //     storyline: '',
+  //     rating: 0,
+  //     genre: 'action',
+  // })
+
   handleChange(event) {
     const { target } = event;
     const { name } = target;
@@ -34,11 +43,12 @@ class AddMovie extends Component {
     });
   }
 
-  title() {
+  title(title) {
     return (
       <label htmlFor="title-input" data-testid="title-input-label">
         Título
         <input
+          name="title"
           type="text"
           data-testid="title-input"
           value={ title }
@@ -49,11 +59,12 @@ class AddMovie extends Component {
     );
   }
 
-  subtitle() {
+  subtitle(subtitle) {
     return (
       <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
         Subtítulo
         <input
+          name="subtitle"
           type="text"
           data-testid="subtitle-input"
           value={ subtitle }
@@ -64,11 +75,12 @@ class AddMovie extends Component {
     );
   }
 
-  imagePath() {
+  imagePath(imagePath) {
     return (
       <label htmlFor="image-input" data-testid="image-input-label">
         Imagem
         <input
+          name="imagePath"
           type="text"
           data-testid="image-input"
           value={ imagePath }
@@ -78,11 +90,12 @@ class AddMovie extends Component {
     );
   }
 
-  storyline() {
+  storyline(storyline) {
     return (
       <label htmlFor="storyline-input" data-testid="storyline-input-label">
         Sinopse
         <input
+          name="storyline"
           type="text"
           data-testid="storyline-input"
           value={ storyline }
@@ -93,11 +106,12 @@ class AddMovie extends Component {
     );
   }
 
-  rating() {
+  rating(rating) {
     return (
       <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
         <input
+          name="rating"
           type="number"
           data-testid="rating-input"
           value={ rating }
@@ -107,11 +121,12 @@ class AddMovie extends Component {
     );
   }
 
-  genre() {
+  genre(genre) {
     return (
       <label htmlFor="genre-input" data-testid="genre-input-label">
         Gênero
         <select
+          name="genre"
           data-testid="genre-input"
           value={ genre }
           onChange={ this.handleChange }
