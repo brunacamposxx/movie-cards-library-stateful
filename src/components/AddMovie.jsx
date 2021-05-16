@@ -25,18 +25,8 @@ class AddMovie extends Component {
     this.genre = this.genre.bind(this);
   }
 
-  // this.setState({
-  //   title: '',
-  //     subtitle: '',
-  //     imagePath: '',
-  //     storyline: '',
-  //     rating: 0,
-  //     genre: 'action',
-  // })
-
-  handleChange(event) {
-    const { target } = event;
-    const { name } = target;
+  handleChange({ target }) {
+    const { name, value } = target;
 
     this.setState({
       [name]: value,
