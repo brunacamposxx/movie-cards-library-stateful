@@ -14,14 +14,37 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       moviesLibrary: props.movies,
+      movieSet: props.movies,
     };
   }
 
   search = ({ target }) => {
     const value = (target.type === 'checkbox' ? target.checked : target.value);
+    this.changes(target.name, value);
     this.setState({
       [target.name]: value,
     });
+  }
+
+  changes = (name, value) => {
+    const { moviesLibrary, movieSet } = this.state;
+    if (name === 'bookmarkedOnly') {
+      const array = value ? moviesLibrary.filter((movie) => (movie.bookmarked === value))
+        : (movieSet);
+      this.setState({ moviesLibrary: array });
+    }
+    if (name === 'selectedGenre') {
+      const array = value !== '' ? movieSet.filter((movie) => (movie.genre === value))
+        : (movieSet);
+      this.setState({ moviesLibrary: array });
+    }
+    if (name === 'searchText') {
+      const array = value !== '' ? movieSet.filter((movie) => (movie
+        .title.includes(value)) || (movie.subtitle.includes(value))
+        || (movie.storyline.includes(value)))
+        : (movieSet);
+      this.setState({ moviesLibrary: array });
+    }
   }
 
   render() {
