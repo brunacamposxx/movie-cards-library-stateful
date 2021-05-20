@@ -26,6 +26,8 @@ class MovieLibrary extends Component {
     });
   }
 
+  // recebi muita ajuda da duda wiltiner e anderson pedrosa no requisito 18
+
   changes = (name, value) => {
     const { moviesLibrary, movieSet } = this.state;
     if (name === 'bookmarkedOnly') {
